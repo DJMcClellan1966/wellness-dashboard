@@ -1,7 +1,7 @@
 // Wellness Dashboard Application
 class WellnessDashboard {
     constructor() {
-        this.currentDate = new Date().toDateString();
+        this.currentDate = new Date().toISOString().split('T')[0];
         this.wellnessTips = [
             "💧 Staying hydrated improves focus and energy levels throughout the day.",
             "🚶 Walking 10,000 steps daily can reduce the risk of chronic diseases.",
@@ -242,9 +242,16 @@ class WellnessDashboard {
                 terrible: '😢'
             };
 
+            const displayDate = new Date(date + 'T00:00:00').toLocaleDateString('en-US', { 
+                weekday: 'short', 
+                year: 'numeric', 
+                month: 'short', 
+                day: 'numeric' 
+            });
+            
             html += `
                 <div class="history-item">
-                    <div class="history-date">${date} ${data.mood ? moodEmoji[data.mood] : ''}</div>
+                    <div class="history-date">${displayDate} ${data.mood ? moodEmoji[data.mood] : ''}</div>
                     <div class="history-metrics">
                         <div>🚶 Steps: ${data.steps || 0}</div>
                         <div>💧 Water: ${data.water || 0} glasses</div>
