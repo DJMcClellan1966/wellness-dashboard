@@ -141,12 +141,12 @@ All data stored in browser localStorage:
 
 ## 📊 Benefits
 
-After 30 days of using ScreenBalance:
-- ↑ 35% improvement in energy scores
-- ↑ 28% more frequent breaks
-- ↑ 42% focus session completion rate
-- ↓ 31% distraction events
-- ↓ 24% late-night screen time
+Expected benefits from consistent use of ScreenBalance:
+- Improved energy scores through better habits
+- More frequent breaks for reduced eye strain
+- Higher focus session completion rates
+- Fewer distraction events during work
+- Reduced late-night screen time for better sleep
 
 ## 🎯 Use Cases
 

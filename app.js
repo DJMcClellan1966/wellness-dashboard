@@ -6,6 +6,12 @@ class ScreenBalance {
         this.currentSession = null;
         this.sessionInterval = null;
         this.distractionCount = 0;
+        
+        // Constants
+        this.MILLISECONDS_PER_DAY = 24 * 60 * 60 * 1000;
+        this.BREAK_REMINDER_MINUTES = 45;
+        this.DATA_RETENTION_DAYS = 7;
+        
         this.init();
     }
 
@@ -36,7 +42,7 @@ class ScreenBalance {
         };
         
         // Clean old data (keep last 7 days)
-        const sevenDaysAgo = Date.now() - (7 * 24 * 60 * 60 * 1000);
+        const sevenDaysAgo = Date.now() - (this.DATA_RETENTION_DAYS * this.MILLISECONDS_PER_DAY);
         this.data.scores = this.data.scores.filter(s => s.timestamp > sevenDaysAgo);
         this.data.sessions = this.data.sessions.filter(s => s.timestamp > sevenDaysAgo);
         this.data.breaks = this.data.breaks.filter(b => b.timestamp > sevenDaysAgo);
@@ -217,8 +223,8 @@ class ScreenBalance {
         const timeSinceBreak = Date.now() - this.data.lastBreak;
         const minutesSinceBreak = Math.floor(timeSinceBreak / 60000);
         
-        // Remind after 45 minutes
-        if (minutesSinceBreak >= 45 && !this.currentSession) {
+        // Remind after configured minutes
+        if (minutesSinceBreak >= this.BREAK_REMINDER_MINUTES && !this.currentSession) {
             this.showNotification('⏰ Break Reminder', 
                 `You haven't taken a break in ${minutesSinceBreak} minutes. Time to rest your eyes! 👀`);
         }

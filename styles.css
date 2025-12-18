@@ -15,7 +15,7 @@
     --success: #10b981;
     --warning: #f59e0b;
     --danger: #ef4444;
-    --optimal: #10b981;
+    --optimal: var(--success);
     --good: #3b82f6;
     --moderate: #f59e0b;
     --low: #f97316;
