@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ScreenBalance - Digital Wellness Dashboard</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>💚 ScreenBalance</h1>
+            <p class="tagline">Your intelligent digital wellness companion</p>
+        </header>
+
+        <main>
+            <!-- Digital Energy Score -->
+            <section class="energy-score-section">
+                <div class="energy-score-card">
+                    <div class="energy-score-main">
+                        <div class="score-circle" id="scoreCircle">
+                            <div class="score-value" id="scoreValue">100</div>
+                            <div class="score-emoji" id="scoreEmoji">🌟</div>
+                        </div>
+                        <div class="score-label">Digital Energy Score</div>
+                        <div class="score-status" id="scoreStatus">Optimal wellness</div>
+                    </div>
+                    <div class="smart-recommendation" id="smartRecommendation">
+                        <strong>🎯 Smart Tip:</strong> <span id="recommendationText">You're doing great! Keep maintaining that healthy balance.</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Active Focus Session -->
+            <section class="active-session" id="activeSessionSection" style="display: none;">
+                <div class="session-card">
+                    <div class="session-header">
+                        <span class="session-icon" id="sessionIcon">🎯</span>
+                        <span class="session-type" id="sessionType">Focus Session</span>
+                        <button class="btn-small btn-danger" id="endSessionBtn">End Session</button>
+                    </div>
+                    <div class="session-timer" id="sessionTimer">25:00</div>
+                    <div class="session-progress">
+                        <div class="progress-bar">
+                            <div class="progress-fill" id="progressFill"></div>
+                        </div>
+                    </div>
+                    <div class="session-stats">
+                        <div class="stat">
+                            <span class="stat-label">Distractions</span>
+                            <span class="stat-value" id="distractionCount">0</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-label">Goal</span>
+                            <span class="stat-value" id="sessionGoal">25 min</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Quick Actions -->
+            <section class="quick-actions">
+                <button class="action-btn focus-btn" id="startFocusBtn">
+                    🎯 Start Focus
+                </button>
+                <button class="action-btn break-btn" id="takeBreakBtn">
+                    🚶 Take Break
+                </button>
+                <button class="action-btn insights-btn" id="viewInsightsBtn">
+                    💡 View Insights
+                </button>
+            </section>
+
+            <!-- Focus Session Selector -->
+            <section class="focus-selector" id="focusSelector" style="display: none;">
+                <h3>Choose Focus Session Type</h3>
+                <div class="session-types">
+                    <button class="session-type-btn" data-type="work" data-duration="25" data-icon="💼">
+                        <span class="type-icon">💼</span>
+                        <span class="type-name">Work</span>
+                        <span class="type-duration">25 min</span>
+                    </button>
+                    <button class="session-type-btn" data-type="study" data-duration="30" data-icon="📚">
+                        <span class="type-icon">📚</span>
+                        <span class="type-name">Study</span>
+                        <span class="type-duration">30 min</span>
+                    </button>
+                    <button class="session-type-btn" data-type="creative" data-duration="45" data-icon="🎨">
+                        <span class="type-icon">🎨</span>
+                        <span class="type-name">Creative</span>
+                        <span class="type-duration">45 min</span>
+                    </button>
+                    <button class="session-type-btn" data-type="deep" data-duration="60" data-icon="🧠">
+                        <span class="type-icon">🧠</span>
+                        <span class="type-name">Deep Focus</span>
+                        <span class="type-duration">60 min</span>
+                    </button>
+                    <button class="session-type-btn" data-type="reading" data-duration="20" data-icon="📖">
+                        <span class="type-icon">📖</span>
+                        <span class="type-name">Reading</span>
+                        <span class="type-duration">20 min</span>
+                    </button>
+                    <button class="session-type-btn" data-type="meditation" data-duration="10" data-icon="🧘">
+                        <span class="type-icon">🧘</span>
+                        <span class="type-name">Meditation</span>
+                        <span class="type-duration">10 min</span>
+                    </button>
+                </div>
+                <button class="btn-secondary" id="cancelFocusBtn">Cancel</button>
+            </section>
+
+            <!-- Today's Insights -->
+            <section class="insights-section" id="insightsSection">
+                <h3>💡 Today's Insights</h3>
+                <div class="insights-list" id="insightsList">
+                    <div class="insight-card">
+                        <div class="insight-icon">✨</div>
+                        <div class="insight-content">
+                            <strong>Welcome to ScreenBalance!</strong>
+                            <p>Start tracking your digital wellness with focus sessions and breaks.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Wellness Stats -->
+            <section class="stats-section">
+                <h3>📊 Today's Wellness Stats</h3>
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-icon">🎯</div>
+                        <div class="stat-number" id="focusSessionsToday">0</div>
+                        <div class="stat-label">Focus Sessions</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">🚶</div>
+                        <div class="stat-number" id="breaksToday">0</div>
+                        <div class="stat-label">Breaks Taken</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">⏱️</div>
+                        <div class="stat-number" id="activeTimeToday">0m</div>
+                        <div class="stat-label">Active Time</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">💚</div>
+                        <div class="stat-number" id="avgScoreToday">100</div>
+                        <div class="stat-label">Avg. Score</div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Analytics -->
+            <section class="analytics-section">
+                <h3>📈 Weekly Wellness Trend</h3>
+                <div class="chart-container">
+                    <canvas id="wellnessChart"></canvas>
+                </div>
+            </section>
+        </main>
+
+        <footer>
+            <p>Made with 💚 for your digital wellbeing</p>
+            <p class="version">ScreenBalance v1.0 - All data stays on your device</p>
+        </footer>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
